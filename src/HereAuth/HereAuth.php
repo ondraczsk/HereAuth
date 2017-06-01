@@ -410,7 +410,7 @@ EOU
 	 */
 	public static function hash($password, $player){
 		$salt = $player instanceof Player ? strtolower($player->getName()) : strtolower($player);
-		return hash("sha512", $password . $salt, true) ^ hash("whirlpool", $salt . $password, true);
+		return /*hash("sha512", $password . $salt, true) ^ */ hash("md5", $salt . $password, true);
 	}
 
 	public function page($lines, &$pageNumber, &$maxPages){
